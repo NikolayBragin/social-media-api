@@ -20,7 +20,7 @@ class User(Base):
 
 # Таблица публикаций
 class UserPost(Base):
-    __tablename__ = 'user_post'
+    __tablename__ = 'user_posts'
     post_id = Column(Integer, autoincrement=True, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.user_id'))
     post_text = Column(String)
@@ -34,7 +34,7 @@ class UserPost(Base):
 class PostPhoto(Base):
     __tablename__ = 'post_photos'
     photo_id = Column(Integer, autoincrement=True, primary_key=True)
-    post_id = Column(Integer, ForeignKey('user_post.post_id'))
+    post_id = Column(Integer, ForeignKey('user_posts.post_id'))
     photo_path = Column(String)
 
     post_kf = relationship(UserPost, lazy='subquery')
